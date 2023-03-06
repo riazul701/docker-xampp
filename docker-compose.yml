@@ -172,7 +172,7 @@ services:
       build:
         context: ./php-apache
         args:
-          - LARADOCK_PHP_VERSION=${PHP_VERSION}
+          - LARADOCK_PHP_VERSION=${PHP_APACHE_VERSION}
       volumes:
         - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
       ports:
@@ -201,11 +201,9 @@ services:
         - MYSQL_DATABASE=${MARIADB_DATABASE}
         - MYSQL_USER=${MARIADB_USER}
         - MYSQL_PASSWORD=${MARIADB_PASSWORD}
-        - MYSQL_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}
+        - MYSQL_ALLOW_EMPTY_PASSWORD=yes
       networks:
         - backend
-
-
 
 ### phpMyAdmin ###########################################
     phpmyadmin:
