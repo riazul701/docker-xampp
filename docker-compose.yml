@@ -85,17 +85,3 @@ services:
         - 9010:9000
       networks:
         - backend
-
-### Docker-in-Docker ################################################
-    docker-in-docker:
-      image: docker:20.10-dind
-      environment:
-        DOCKER_TLS_SAN: DNS:docker-in-docker
-      privileged: true
-      volumes:
-        - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
-        - docker-in-docker:/certs/client
-      expose:
-        - 2375
-      networks:
-        - backend
