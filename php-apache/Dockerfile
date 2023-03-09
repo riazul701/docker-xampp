@@ -36,11 +36,5 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | b
     && nvm use --lts
 
 RUN pecl channel-update pecl.php.net; \
-  docker-php-ext-install mysqli mbstring pdo pdo_mysql xml pcntl; \
-  if [ $(php -r "echo PHP_VERSION_ID - PHP_RELEASE_VERSION;") = "80100" ] || \
-     [ $(php -r "echo PHP_VERSION_ID - PHP_RELEASE_VERSION;") = "80200" ]; then \
-    php -m | grep -oiE '^tokenizer$'; \
-  else \
-    docker-php-ext-install tokenizer; \
-  fi
-
+  docker-php-ext-install mysqli pdo_mysql; \
+  docker-php-ext-enable pdo_mysql;
