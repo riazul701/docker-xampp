@@ -38,3 +38,7 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | b
 RUN pecl channel-update pecl.php.net; \
   docker-php-ext-install mysqli pdo_mysql; \
   docker-php-ext-enable pdo_mysql;
+
+RUN a2enmod rewrite; \
+  a2enmod headers; \
+  service apache2 restart;
