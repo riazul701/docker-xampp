@@ -49,7 +49,7 @@ services:
         - MYSQL_DATABASE=${MARIADB_DATABASE}
         - MYSQL_USER=${MARIADB_USER}
         - MYSQL_PASSWORD=${MARIADB_PASSWORD}
-        - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+        - MYSQL_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}
       networks:
         - backend
 

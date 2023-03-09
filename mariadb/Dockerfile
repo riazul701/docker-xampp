@@ -1,4 +1,5 @@
-ARG MARIADB_VERSION=latest
+ARG MARIADB_VERSION=10.7
+#ARG MARIADB_VERSION=latest
 FROM mariadb:${MARIADB_VERSION}
 
 LABEL maintainer="Mahmoud Zalt <mahmoud@zalt.me>"
