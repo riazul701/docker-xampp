@@ -17,6 +17,7 @@ RUN set -eux \
         vim \
         nano \
         tree \
+        libgd-dev libzip-dev zip unzip libpng-dev \
     && apt-get clean \
     #####################################
     # Composer:
@@ -36,8 +37,9 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | b
     && nvm use --lts
 
 RUN pecl channel-update pecl.php.net; \
-  docker-php-ext-install mysqli pdo_mysql; \
-  docker-php-ext-enable pdo_mysql;
+  docker-php-ext-install mysqli pdo_mysql gd zip; \
+  docker-php-ext-configure zip; \
+  docker-php-ext-enable pdo_mysql gd zip;
 
 RUN a2enmod rewrite; \
   a2enmod headers; \
