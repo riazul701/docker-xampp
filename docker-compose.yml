@@ -21,6 +21,7 @@ services:
         context: ./php-apache
         args:
           - LARADOCK_PHP_VERSION=${PHP_APACHE_VERSION}
+          - PHP_VERSION=${PHP_VERSION}
       volumes:
         - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
       ports:
@@ -29,6 +30,8 @@ services:
       networks:
         - frontend
         - backend
+      extra_hosts:
+        - 'host.docker.internal:host-gateway'
 
 ### MariaDB ##############################################
     mariadb:
